@@ -6,7 +6,7 @@
     name="CompanyName.ProductName.YourApplication"
     type="win32"
 />
-<description>sxshashing</description>
+<description>actctx</description>
 
 <file
       loadFrom="%systemroot%\system32\xmllite.dll"

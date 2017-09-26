@@ -170,7 +170,10 @@ VOID    DumpActivationContext(PACTIVATION_CONTEXT_DATA     pActivationContextDat
                      
                         pStringEntry = (PACTIVATION_CONTEXT_STRING_SECTION_ENTRY)((ULONG_PTR)pStringHeader + pStringHeader->ElementListOffset);
                         for (jindex = 0; jindex < pStringHeader->ElementCount; jindex++){
-                                printf("Key                               : %S\n", (ULONG_PTR)pStringHeader + pStringEntry[jindex].KeyOffset);
+                                if (pStringEntry[jindex].KeyOffset == 0)
+                                        printf("Key                               : unknown as KeyOffset is 0\n");
+                                else
+                                        printf("Key                               : %S\n", (ULONG_PTR)pStringHeader + pStringEntry[jindex].KeyOffset);
                                 printf("pStringEntry->AssemblyRosterIndex : %.08X\n", pStringEntry[jindex].AssemblyRosterIndex);
                                 
                                 if (pTocEntry[index].Id == ACTIVATION_CONTEXT_SECTION_DLL_REDIRECTION){

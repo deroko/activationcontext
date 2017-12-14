@@ -24,7 +24,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /GS-")
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /Gz")
 add_executable(actctx main.c manifest.manifest)
-set_target_properties(actctx PROPERTIES LINK_FLAGS "/SUBSYSTEM:CONSOLE")
+set_target_properties(actctx PROPERTIES LINK_FLAGS "/SUBSYSTEM:CONSOLE,5.01")
 
 target_link_libraries(actctx comctl32.lib)
 

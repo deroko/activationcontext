@@ -91,6 +91,8 @@ VOID    DumpActivationContext(PACTIVATION_CONTEXT_DATA     pActivationContextDat
                         //printf("AssemblyDirectory:%S\n", (ULONG_PTR)AssemblyInformationSection + pAssemblyInfo->AssemblyDirectoryNameOffset);        
                 }
                 
+                if ((GetVersion() & 0xFF) < 6) continue;
+                
                 printf("RunLevel           : %s\n", g_szRunLevel[pAssemblyInfo->RunLevel]);
                 printf("uiAccess           : %s\n", (pAssemblyInfo->UiAccess) ? "true" : "false");
                 
@@ -240,9 +242,10 @@ VOID    DumpActivationContext(PACTIVATION_CONTEXT_DATA     pActivationContextDat
                                                 printf("Language                          : %S\n", tmp);
                                         }
                                         
-                                        printf("RunLevel                          : %s\n", g_szRunLevel[pAssemblyInformation->RunLevel]);
-                                        printf("uiAccess                          : %s\n", (pAssemblyInformation->UiAccess) ? "true" : "false");
-                                
+                                        if ((GetVersion() & 0xFF) >= 6){
+                                                printf("RunLevel                          : %s\n", g_szRunLevel[pAssemblyInformation->RunLevel]);
+                                                printf("uiAccess                          : %s\n", (pAssemblyInformation->UiAccess) ? "true" : "false");
+                                        }                
                                 }  
                                 
                                 if (pTocEntry[index].Id == ACTIVATION_CONTEXT_SECTION_APPLICATION_SETTINGS){
